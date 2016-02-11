@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IP Digger</string>
+    <string name="title_activity_ipinfo">IPInfo</string>
+</resources>
