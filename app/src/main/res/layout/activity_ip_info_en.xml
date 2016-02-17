@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/result"
-        android:padding="3dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your current IP Address"
@@ -23,51 +23,71 @@
         >
         <TableRow
             android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="IP:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/ip"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="Country:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/country"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="Region:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/region"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="City:"/>
             <TextView android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/city"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="ISP:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/isp"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="Latitude:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/latitude"/>
         </TableRow>
         <TableRow android:padding="10dp">
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
+                android:gravity="right"
                 android:text="Longitude:"/>
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/longitude"/>
         </TableRow>

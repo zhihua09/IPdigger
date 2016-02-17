@@ -43,15 +43,18 @@ public class LanguageSelectActivity extends Activity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(LanguageSelectActivity.this,IPQueryActivity.class);
+        intent.putExtra("ip","currentIP");
         switch(v.getId()){
             case R.id.btn_en:
-                Intent intent = new Intent(LanguageSelectActivity.this,IPQueryActivity.class);
                 intent.putExtra("lang","en");
-                intent.putExtra("ip","currentIP");
-                startActivity(intent);
-                finish();
                 break;
-        }
+            case R.id.btn_zh_CN:
+                intent.putExtra("lang","zh-CN");
+                break;
 
+        }
+        startActivity(intent);
+        finish();
     }
 }
