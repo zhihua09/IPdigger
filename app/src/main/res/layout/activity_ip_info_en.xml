@@ -1,125 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-    <TextView
-        android:id="@+id/result"
-        android:padding="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your current IP Address"
-        android:gravity="center"
-        android:background="#79CDCD"
-        ></TextView>
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="19dp"
-        android:paddingRight="19dp"
-        >
-        <TableRow
-            android:padding="10dp">
             <TextView
+                android:id="@+id/result"
+                android:padding="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="IP:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/ip"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Country:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/country"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Region:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/region"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="City:"/>
-            <TextView android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/city"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="ISP:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/isp"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Latitude:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/latitude"/>
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Longitude:"/>
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/longitude"/>
-        </TableRow>
-    </TableLayout>
-    <Button
-        android:id="@+id/locate_on_map"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Locate on Map"
-        android:background="#79CDCD"
-        android:gravity="center"/>
+                android:text="Your current IP Address"
+                android:background="#79CDCD"
+                android:textSize="18sp"
+                />
+            <Button
+                android:id="@+id/lang"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:textSize="12sp"
+                android:text="简体中文"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="4dp" />
+        </RelativeLayout>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="19dp"
+            android:paddingRight="19dp"
+            >
+            <TableRow
+                android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="IP:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/ip"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Country:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/country"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Region:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/region"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="City:"/>
+                <TextView android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/city"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="ISP:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/isp"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Timezone:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/timezone"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Latitude:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/latitude"/>
+            </TableRow>
+            <TableRow android:padding="10dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Longitude:"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/longitude"/>
+            </TableRow>
+        </TableLayout>
+        <Button
+            android:id="@+id/locate_on_map"
+            android:layout_gravity="center"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:text="Locate on Map"
+            android:background="#79CDCD"
+            android:gravity="center"/>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
         >
         <EditText
             android:id="@+id/ip_domain_to_query"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_weight="1"
+            android:textSize="14sp"
             android:hint="input IP/domain to query"/>
         <Button
             android:id="@+id/qurey"
             android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:text="Query"
             android:background="#79CDCD"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
             />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

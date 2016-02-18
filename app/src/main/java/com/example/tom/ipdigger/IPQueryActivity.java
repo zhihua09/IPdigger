@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.tom.ipdigger.util.HttpCallbackListener;
 import com.example.tom.ipdigger.util.HttpUtil;
@@ -18,46 +20,58 @@ import org.json.JSONObject;
  */
 public class IPQueryActivity extends Activity implements HttpCallbackListener{
 
-    private String ip;
+    private String ip ;
 
-    private String language;
+    private String language ;
+
+    private String queryFailMessage;
 
     private ProgressDialog progressDialog;
 
-    private EditText queryState ;
+    private  TextView queryState;
+
 
     protected  void onCreate(Bundle savedInstanceState){
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ip_query);
+        queryState = (TextView) findViewById(R.id.query_state);
 
         Intent intent = getIntent();
-        language = intent.getStringExtra("lang");
-        ip = intent.getStringExtra("ip");
+        if(intent != null){
+            language = intent.getStringExtra("lang");
+            ip = intent.getStringExtra("ip");
+        }
 
        String address;
-        if(ip.equals("currentIP")){
-            address = "http://ip-api.com/json/"+"?lang="+language+"&fields=58073";
+        if( ip.equals("currentIP")){
+            address = "http://ip-api.com/json/"+"?lang="+language+"&fields=61439";
 
        }else{
-            address = "http://ip-api.com/json/"+ip+"?lang="+language+"&fields=58073";
+            address = "http://ip-api.com/json/"+ip+"?lang="+language+"&fields=61439";
        }
 
         showProgressDialog();
         HttpUtil.sendHttpRequest(address,IPQueryActivity.this);
-        closeProgressDialog();
     }
 
     @Override
     public void onFinish(String response) {
+
         try {
             JSONObject jsonObject = new JSONObject(response);
             String status = jsonObject.getString("status");
             if(status.equals("fail")){
                 String message = jsonObject.getString("message");
                 String query =jsonObject.getString("query");
-                setContentView(R.layout.activity_ip_query);
-                queryState = (EditText) findViewById(R.id.query_state);
-                queryState.setText("status:"+status+"\n"+"queried IP:"+query+"\n"+"message:"+message);
+                queryFailMessage = "status:"+status+"\n"+"queried IP:"+query+"\n"+"message:"+message;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        closeProgressDialog();
+                        queryState.setText(queryFailMessage);
+
+                    }
+                });
             }else{
                 String city = jsonObject.getString("city");
                 String country = jsonObject.getString("country");
@@ -66,6 +80,7 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
                 float longitude = (float) jsonObject.getDouble("lon");
                 String query =jsonObject.getString("query");
                 String region = jsonObject.getString("regionName");
+                String timezone = jsonObject.getString("timezone");
 
                 Intent intent = new Intent(IPQueryActivity.this,IPInfoActivity.class);
                 intent.putExtra("lang",language);
@@ -76,16 +91,24 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
                 intent.putExtra("isp",isp);
                 intent.putExtra("query",query);
                 intent.putExtra("region",region);
+                intent.putExtra("timezone",timezone);
                 intent.putExtra("lat",latitude);
                 intent.putExtra("lon",longitude);
 
                 startActivity(intent);
+                closeProgressDialog();
+
                 finish();
             }
         } catch (JSONException e) {
-            setContentView(R.layout.activity_ip_query);
-            queryState = (EditText) findViewById(R.id.query_state);
-            queryState.setText(e.getMessage().toString());
+            queryFailMessage =e.getMessage().toString();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    closeProgressDialog();
+                    queryState.setText(queryFailMessage);
+                }
+            });
         }
 
 
@@ -93,7 +116,14 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
 
     @Override
     public void onError(Exception e) {
-        queryState.setText(e.getMessage().toString());
+        queryFailMessage =e.getMessage().toString();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                closeProgressDialog();
+                queryState.setText(queryFailMessage);
+            }
+        });
     }
 
     /**
@@ -106,6 +136,7 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
             progressDialog.setCanceledOnTouchOutside(false);
         }
         progressDialog.show();
+        Log.d("ipqueryActivity","dialog show");
     }
 
     /**
@@ -114,6 +145,7 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
     private void closeProgressDialog(){
         if(progressDialog!=null){
             progressDialog.dismiss();
+            Log.d("ipqueryActivity","dialog dismiss");
         }
     }
 }
