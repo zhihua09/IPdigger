@@ -136,7 +136,7 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
             progressDialog.setCanceledOnTouchOutside(false);
         }
         progressDialog.show();
-        Log.d("ipqueryActivity","dialog show");
+//        Log.d("ipqueryActivity","dialog show");
     }
 
     /**
@@ -145,7 +145,7 @@ public class IPQueryActivity extends Activity implements HttpCallbackListener{
     private void closeProgressDialog(){
         if(progressDialog!=null){
             progressDialog.dismiss();
-            Log.d("ipqueryActivity","dialog dismiss");
+//            Log.d("ipqueryActivity","dialog dismiss");
         }
     }
 }

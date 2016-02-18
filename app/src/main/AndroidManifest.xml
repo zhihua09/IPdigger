@@ -45,8 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity"></activity>
         <activity android:name=".IPQueryActivity"></activity>
+        <activity android:name=".GdMapActivity"></activity>
     </application>
 
 </manifest>

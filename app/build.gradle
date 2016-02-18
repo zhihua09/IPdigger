@@ -31,7 +31,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile files('libs/BaiduLBS_Android.jar')
-    compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile files('libs/AMap_3DMap_V3.2.0.1_20160122.jar')
 }

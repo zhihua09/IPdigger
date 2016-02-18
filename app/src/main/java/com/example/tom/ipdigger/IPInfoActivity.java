@@ -109,7 +109,7 @@ public class IPInfoActivity extends Activity implements View.OnClickListener{
                 finish();
                 break;
             case R.id.locate_on_map:
-                Intent mapIntent = new Intent(IPInfoActivity.this,MapActivity.class);
+                Intent mapIntent = new Intent(IPInfoActivity.this,GdMapActivity.class);
                 mapIntent.putExtra("lat",lat);
                 mapIntent.putExtra("lon",lon);
                 startActivity(mapIntent);
