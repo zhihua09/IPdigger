@@ -8,6 +8,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 public class IPInfoActivity extends Activity implements View.OnClickListener{
 
@@ -91,11 +94,20 @@ public class IPInfoActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.qurey:
-                Intent intent = new Intent(IPInfoActivity.this,IPQueryActivity.class);
-                intent.putExtra("lang",lang);
-                intent.putExtra("ip",ipOrDomainToQuery.getText().toString());
-                startActivity(intent);
-                finish();
+                String ipOrDomain = ipOrDomainToQuery.getText().toString();
+                if(Pattern.matches("^(\\d{1,3})(\\.(\\d{1,3})){3}$",ipOrDomain) || Pattern.matches("^[^\\s]*$",ipOrDomain)){
+                    Intent intent = new Intent(IPInfoActivity.this,IPQueryActivity.class);
+                    intent.putExtra("lang",lang);
+                    intent.putExtra("ip",ipOrDomain);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    if(lang.equals("en")){
+                        Toast.makeText(IPInfoActivity.this,"ip or domain is invalid.",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(IPInfoActivity.this,"请输入正确的域名或IP地址",Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
             case R.id.lang:
                 Intent intentLang = new Intent(IPInfoActivity.this,IPQueryActivity.class);

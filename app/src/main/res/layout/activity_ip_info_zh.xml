@@ -149,7 +149,8 @@
             android:layout_height="38dp"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:hint="输入IP/域名"/>
+            android:hint="输入IP/域名"
+            android:singleLine="true"/>
         <Button
             android:id="@+id/qurey"
             android:layout_width="80dp"
